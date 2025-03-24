@@ -956,6 +956,7 @@ input, select, textarea {
 	.image {
 		position: relative;
 		display: inline-block;
+                opacity: 1; /* Ensure full visibility */
 	}
 
 		.image:before {
@@ -971,6 +972,8 @@ input, select, textarea {
 		.image img {
 			display: block;
 			width: 100%;
+                        image-rendering: auto; /* Ensure proper rendering */
+			image-rendering: crisp-edges; /* For sharpness */
 		}
 
 		.image.featured {
