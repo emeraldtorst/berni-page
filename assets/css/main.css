@@ -1847,7 +1847,12 @@ input, select, textarea {
 			top: 0;
 			height: 3em;
 			line-height: 3em;
-			cursor: default;
+			cursor: default;		
+			background-color: black; /* Add black background */
+			color: white; /* Ensure text is visible */
+			padding: 0.5em 1em; /* Add padding for the frame */
+			border-radius: 0.25em; /* Optional: Add rounded corners */
+			display: inline-block; /* Ensure the background fits the text */
 		}
 
 			#header h1 a {
