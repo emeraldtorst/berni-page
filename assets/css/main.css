@@ -566,7 +566,7 @@ input, select, textarea {
 		letter-spacing: -0.05em;
 			background-color: black; /* Add black background */
 			color: white; /* Ensure text is visible */
-			padding: 0.5em 0.5em; /* Add padding for the frame */
+			padding: 0.25em 0.25em; /* Add padding for the frame */
 			border-radius: 0.25em; /* Optional: Add rounded corners */
 			display: inline-block; /* Ensure the background fits the text */
 	}
