@@ -9,18 +9,21 @@
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Raleway:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <!-- AOS Animation Library -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <style>
         /* ====== Global Styles ====== */
         :root {
-            --primary: #5e3023;
-            --secondary: #895737;
-            --accent: #c08552;
-            --light: #f0e3d3;
-            --dark: #1a1a1a;
+            --primary: #3a2e39;
+            --secondary: #5e4e5d;
+            --accent: #c69f89;
+            --light: #f8f5f2;
+            --dark: #1e1a1d;
             --text: #333333;
             --text-light: #666666;
             --white: #ffffff;
+            --overlay: rgba(30, 26, 29, 0.85);
         }
 
         * {
@@ -30,34 +33,41 @@
         }
 
         body {
-            font-family: 'Montserrat', sans-serif;
+            font-family: 'Raleway', sans-serif;
             background-color: var(--light);
             color: var(--text);
-            line-height: 1.6;
-            transition: all 0.3s ease;
+            line-height: 1.7;
+            transition: all 0.4s ease;
+            overflow-x: hidden;
+            background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAABmJLR0QA/wD/AP+gvaeTAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAB3RJTUUH4AkEEjIZJXz9/AAAAB1pVFh0Q29tbWVudAAAAAAAQ3JlYXRlZCB3aXRoIEdJTVBkLmUHAAAAnElEQVRo3u3YMQrCQBBA0S1s/QH/wNLGxlpEtBJRvEI7PYDtXeQQ2wgWgZ3Awy5eYWCbYSoMAAAAAAD8u0lZt9uVMcbLOXfPzLq11lprrbXWWmuttdZaa/9sO0mTU7zvvX+PXkrJ5xifS9KklJJZa+19H+NP4vX+Wms553xOx5jz5Jwr4/EQ7zHHmNOxxgEAAPipDV5YM2NEx0l1AAAAAElFTkSuQmCC');
+            background-attachment: fixed;
+            background-size: 300px;
+            background-blend-mode: overlay;
         }
 
         body.dark-mode {
             background-color: var(--dark);
             color: var(--light);
+            background-blend-mode: soft-light;
         }
 
         .container {
-            max-width: 1200px;
+            max-width: 1400px;
             margin: 0 auto;
-            padding: 2rem;
+            padding: 2rem 4rem;
         }
 
-        h1, h2, h3 {
-            font-family: 'Libre Baskerville', serif;
-            font-weight: 700;
+        h1, h2, h3, h4 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 600;
+            letter-spacing: 0.5px;
         }
 
         .section-title {
-            font-size: 1.8rem;
-            margin-bottom: 1.5rem;
+            font-size: 2.2rem;
+            margin-bottom: 2rem;
             position: relative;
-            padding-bottom: 0.5rem;
+            padding-bottom: 1rem;
             color: var(--primary);
         }
 
@@ -70,9 +80,19 @@
             position: absolute;
             bottom: 0;
             left: 0;
-            width: 60px;
-            height: 3px;
+            width: 80px;
+            height: 4px;
             background-color: var(--primary);
+            transform-origin: left;
+            transition: transform 0.4s ease;
+        }
+
+        [data-aos="title-animation"] .section-title::after {
+            transform: scaleX(0);
+        }
+        
+        [data-aos="title-animation"].aos-animate .section-title::after {
+            transform: scaleX(1);
         }
 
         body.dark-mode .section-title::after {
@@ -81,42 +101,62 @@
 
         /* ====== Header Styles ====== */
         header {
-            margin-bottom: 3rem;
+            margin-bottom: 4rem;
             position: relative;
+            min-height: 90vh;
+            display: flex;
+            align-items: center;
+        }
+
+        .header-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(248, 245, 242, 0.9) 0%, rgba(248, 245, 242, 0.7) 100%);
+            z-index: -1;
+        }
+
+        body.dark-mode .header-overlay {
+            background: linear-gradient(135deg, rgba(30, 26, 29, 0.9) 0%, rgba(30, 26, 29, 0.7) 100%);
         }
 
         .header-content {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 2rem;
+            display: grid;
+            grid-template-columns: 1fr 1.5fr;
+            gap: 4rem;
             align-items: center;
         }
 
         .profile-image-container {
-            flex: 0 0 300px;
-            max-width: 100%;
+            position: relative;
+            align-self: center;
         }
 
         .profile-image {
             width: 100%;
             border-radius: 8px;
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-            transition: transform 0.3s ease;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+            transition: all 0.5s cubic-bezier(0.19, 1, 0.22, 1);
+            transform: perspective(1000px) rotateY(-5deg);
+            backface-visibility: hidden;
         }
 
-        .profile-image:hover {
-            transform: scale(1.02);
+        .profile-image-container:hover .profile-image {
+            transform: perspective(1000px) rotateY(5deg);
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.3);
         }
 
         .header-text {
-            flex: 1;
             min-width: 300px;
         }
 
         .header-text h1 {
-            font-size: 2.5rem;
-            margin-bottom: 0.5rem;
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
             color: var(--primary);
+            line-height: 1.2;
         }
 
         body.dark-mode .header-text h1 {
@@ -124,19 +164,40 @@
         }
 
         .title {
-            font-size: 1.2rem;
+            font-size: 1.4rem;
             font-weight: 500;
-            margin-bottom: 1rem;
+            margin-bottom: 2rem;
             color: var(--secondary);
+            position: relative;
+            display: inline-block;
         }
 
         body.dark-mode .title {
-            color: #c08552;
+            color: var(--accent);
+        }
+
+        .title::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background-color: var(--secondary);
+            transform: scaleX(0);
+            transform-origin: right;
+            transition: transform 0.4s ease;
+        }
+
+        .title:hover::after {
+            transform: scaleX(1);
+            transform-origin: left;
         }
 
         .bio {
-            margin-bottom: 1.5rem;
+            margin-bottom: 2rem;
             color: var(--text);
+            font-size: 1.1rem;
         }
 
         body.dark-mode .bio {
@@ -145,41 +206,61 @@
 
         .social-icons {
             display: flex;
-            gap: 1rem;
+            gap: 1.5rem;
         }
 
         .contact-icon {
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            width: 40px;
-            height: 40px;
+            width: 50px;
+            height: 50px;
             background-color: var(--primary);
             color: var(--white);
             border-radius: 50%;
-            transition: all 0.3s ease;
+            transition: all 0.4s cubic-bezier(0.19, 1, 0.22, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .contact-icon::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: 0.5s;
+        }
+
+        .contact-icon:hover::before {
+            left: 100%;
         }
 
         .contact-icon:hover {
             background-color: var(--secondary);
-            transform: translateY(-3px);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
         }
 
         /* ====== Theme Toggle Button ====== */
         .theme-toggle {
-            position: absolute;
-            top: 1rem;
-            right: 1rem;
+            position: fixed;
+            top: 2rem;
+            right: 2rem;
             background-color: var(--primary);
             color: var(--white);
             border: none;
-            padding: 0.5rem 1rem;
-            border-radius: 30px;
+            padding: 0.8rem 1.5rem;
+            border-radius: 50px;
             cursor: pointer;
             display: flex;
             align-items: center;
-            gap: 0.5rem;
-            transition: all 0.3s ease;
+            gap: 1rem;
+            transition: all 0.4s cubic-bezier(0.19, 1, 0.22, 1);
+            z-index: 1000;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
         }
 
         body.dark-mode .theme-toggle {
@@ -189,16 +270,23 @@
 
         .theme-toggle:hover {
             background-color: var(--secondary);
-            transform: translateY(-2px);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
         }
 
         body.dark-mode .theme-toggle:hover {
             background-color: #d49662;
         }
 
-        /* ====== Video Section ====== */
+        /* ====== Main Grid Layout ====== */
+        .main-grid {
+            display: grid;
+            grid-template-columns: 1fr 300px;
+            gap: 3rem;
+        }
+
         .video-section {
-            margin-bottom: 3rem;
+            margin-bottom: 4rem;
         }
 
         .video-container {
@@ -207,7 +295,14 @@
             height: 0;
             overflow: hidden;
             border-radius: 8px;
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+            transition: all 0.4s ease;
+            transform: translateY(0);
+        }
+
+        .video-container:hover {
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.3);
+            transform: translateY(-5px);
         }
 
         .video-container iframe {
@@ -219,42 +314,237 @@
             border: none;
         }
 
-        /* ====== Concerts Section ====== */
-        .concerts {
-            margin-bottom: 3rem;
+        /* ====== Sidebar Styles ====== */
+        .sidebar {
+            display: flex;
+            flex-direction: column;
+            gap: 3rem;
         }
 
-        .concert-section {
-            margin-bottom: 2rem;
+        .sidebar-card {
+            background-color: var(--white);
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+            transition: all 0.4s cubic-bezier(0.19, 1, 0.22, 1);
         }
 
-        .concert-list {
+        body.dark-mode .sidebar-card {
+            background-color: #2a2a2a;
+        }
+
+        .sidebar-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 25px 50px rgba(0,0,0,0.2);
+        }
+
+        .sidebar-title {
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--primary);
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+
+        body.dark-mode .sidebar-title {
+            color: var(--accent);
+        }
+
+        .sidebar-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background-color: var(--primary);
+        }
+
+        body.dark-mode .sidebar-title::after {
+            background-color: var(--accent);
+        }
+
+        /* Upcoming Events */
+        .event-item {
+            padding: 1rem 0;
+            border-bottom: 1px dashed #ddd;
+            transition: all 0.3s ease;
+        }
+
+        body.dark-mode .event-item {
+            border-bottom-color: #444;
+        }
+
+        .event-item:last-child {
+            border-bottom: none;
+        }
+
+        .event-item:hover {
+            transform: translateX(10px);
+        }
+
+        .event-date {
+            font-weight: 600;
+            color: var(--primary);
+            margin-bottom: 0.3rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        body.dark-mode .event-date {
+            color: var(--accent);
+        }
+
+        .event-date i {
+            font-size: 0.9rem;
+        }
+
+        .event-location {
+            font-size: 0.9rem;
+            color: var(--text-light);
+            margin-bottom: 0.5rem;
+        }
+
+        body.dark-mode .event-location {
+            color: #aaa;
+        }
+
+        .event-program {
+            font-size: 0.9rem;
+            font-style: italic;
+        }
+
+        /* Testimonial */
+        .testimonial-text {
+            font-style: italic;
+            margin-bottom: 1rem;
+            position: relative;
+            padding-left: 1.5rem;
+        }
+
+        .testimonial-text::before {
+            content: '"';
+            position: absolute;
+            left: 0;
+            top: 0;
+            font-size: 3rem;
+            line-height: 1;
+            color: rgba(0,0,0,0.1);
+            font-family: Georgia, serif;
+        }
+
+        body.dark-mode .testimonial-text::before {
+            color: rgba(255,255,255,0.1);
+        }
+
+        .testimonial-author {
+            font-weight: 600;
+            color: var(--primary);
+            text-align: right;
+        }
+
+        body.dark-mode .testimonial-author {
+            color: var(--accent);
+        }
+
+        /* Blog Preview */
+        .blog-preview {
             display: flex;
             flex-direction: column;
             gap: 1.5rem;
         }
 
+        .blog-item {
+            transition: all 0.3s ease;
+        }
+
+        .blog-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .blog-item h4 {
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+            color: var(--primary);
+        }
+
+        body.dark-mode .blog-item h4 {
+            color: var(--accent);
+        }
+
+        .blog-date {
+            font-size: 0.8rem;
+            color: var(--text-light);
+            margin-bottom: 0.5rem;
+        }
+
+        body.dark-mode .blog-date {
+            color: #aaa;
+        }
+
+        .blog-excerpt {
+            font-size: 0.9rem;
+        }
+
+        /* ====== Concerts Section ====== */
+        .concerts {
+            margin-bottom: 4rem;
+        }
+
+        .concert-section {
+            margin-bottom: 3rem;
+        }
+
+        .concert-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
         .concert-item {
             background-color: var(--white);
-            padding: 1.5rem;
+            padding: 2rem;
             border-radius: 8px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: all 0.4s cubic-bezier(0.19, 1, 0.22, 1);
+            position: relative;
+            overflow: hidden;
         }
         
         body.dark-mode .concert-item {
             background-color: #2a2a2a;
         }
 
+        .concert-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 0;
+            background: linear-gradient(to bottom, var(--primary), var(--accent));
+            transition: height 0.6s cubic-bezier(0.19, 1, 0.22, 1);
+        }
+
+        .concert-item:hover::before {
+            height: 100%;
+        }
+
+        body.dark-mode .concert-item::before {
+            background: linear-gradient(to bottom, var(--accent), #d49662);
+        }
+
         .concert-item:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
         }
 
         .concert-date {
             font-weight: 600;
             color: var(--primary);
             margin-bottom: 0.5rem;
+            font-size: 1.1rem;
         }
 
         body.dark-mode .concert-date {
@@ -265,24 +555,35 @@
             font-weight: 500;
             margin-bottom: 0.5rem;
             color: var(--text);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
         }
 
         body.dark-mode .concert-location {
             color: var(--light);
         }
 
+        .concert-location i {
+            font-size: 0.9rem;
+        }
+
         .concert-program {
             color: var(--text-light);
             font-style: italic;
+            margin-top: 1rem;
+            padding-top: 1rem;
+            border-top: 1px dashed rgba(0,0,0,0.1);
         }
 
         body.dark-mode .concert-program {
-            color: #aaaaaa;
+            color: #aaa;
+            border-top-color: rgba(255,255,255,0.1);
         }
 
         /* ====== Social Section ====== */
         .social-section {
-            margin-bottom: 3rem;
+            margin-bottom: 4rem;
         }
 
         .social-links {
@@ -296,39 +597,69 @@
             padding: 2rem;
             border-radius: 8px;
             text-align: center;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: all 0.5s cubic-bezier(0.19, 1, 0.22, 1);
             cursor: pointer;
+            position: relative;
+            overflow: hidden;
         }
 
         body.dark-mode .social-card {
             background-color: #2a2a2a;
         }
 
+        .social-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background-color: var(--primary);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.4s ease;
+        }
+
+        body.dark-mode .social-card::before {
+            background-color: var(--accent);
+        }
+
+        .social-card:hover::before {
+            transform: scaleX(1);
+        }
+
         .social-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
         }
 
         .social-icon {
             font-size: 2.5rem;
-            margin-bottom: 1rem;
-            transition: transform 0.3s ease;
+            margin-bottom: 1.5rem;
+            transition: all 0.4s ease;
         }
 
         .social-card:hover .social-icon {
-            transform: scale(1.1);
+            transform: scale(1.2);
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0) scale(1.2); }
+            50% { transform: translateY(-10px) scale(1.2); }
         }
 
         .social-name {
-            font-size: 1.3rem;
-            margin-bottom: 0.5rem;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
         }
 
         .social-desc {
             color: var(--text-light);
             margin-bottom: 1.5rem;
-            min-height: 50px;
+            min-height: 60px;
+            font-size: 0.95rem;
         }
 
         body.dark-mode .social-desc {
@@ -339,13 +670,21 @@
             background-color: var(--primary);
             color: var(--white);
             border: none;
-            padding: 0.5rem 1.5rem;
-            border-radius: 30px;
+            padding: 0.7rem 2rem;
+            border-radius: 50px;
             cursor: pointer;
-            transition: all 0.3s ease;
+            transition: all 0.4s cubic-bezier(0.19, 1, 0.22, 1);
             display: inline-flex;
             align-items: center;
-            gap: 0.5rem;
+            gap: 0.8rem;
+            font-size: 0.9rem;
+            font-weight: 500;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .social-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
         }
 
         .youtube-card:hover .social-btn {
@@ -380,44 +719,120 @@
             color: #1877F2;
         }
 
+        /* ====== Audio Player ====== */
+        .audio-section {
+            margin-bottom: 4rem;
+        }
+
+        .audio-player {
+            background-color: var(--white);
+            border-radius: 8px;
+            padding: 2rem;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+        }
+
+        body.dark-mode .audio-player {
+            background-color: #2a2a2a;
+        }
+
+        .audio-track {
+            margin-bottom: 2rem;
+        }
+
+        .track-title {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+            color: var(--primary);
+        }
+
+        body.dark-mode .track-title {
+            color: var(--accent);
+        }
+
+        .audio-container {
+            width: 100%;
+            height: 40px;
+            margin-top: 1rem;
+        }
+
+        audio {
+            width: 100%;
+            outline: none;
+        }
+
         /* ====== Contact Section ====== */
         .contact-section {
-            margin-bottom: 3rem;
+            margin-bottom: 4rem;
             text-align: center;
+            background-color: var(--white);
+            padding: 3rem 2rem;
+            border-radius: 8px;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+        }
+
+        body.dark-mode .contact-section {
+            background-color: #2a2a2a;
         }
 
         .contact-email {
-            margin-bottom: 1.5rem;
+            margin-bottom: 2rem;
         }
 
         .contact-email a {
-            font-size: 1.2rem;
+            font-size: 1.4rem;
             color: var(--primary);
             text-decoration: none;
             font-weight: 500;
-            transition: color 0.3s ease;
+            transition: all 0.3s ease;
+            position: relative;
         }
 
         body.dark-mode .contact-email a {
             color: var(--accent);
         }
 
+        .contact-email a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background-color: var(--primary);
+            transform: scaleX(0);
+            transform-origin: right;
+            transition: transform 0.4s ease;
+        }
+
+        body.dark-mode .contact-email a::after {
+            background-color: var(--accent);
+        }
+
+        .contact-email a:hover::after {
+            transform: scaleX(1);
+            transform-origin: left;
+        }
+
         .contact-email a:hover {
             color: var(--secondary);
-            text-decoration: underline;
         }
 
         body.dark-mode .contact-email a:hover {
             color: #d49662;
         }
 
+        .social-icons {
+            justify-content: center;
+        }
+
         /* ====== Footer ====== */
         footer {
             text-align: center;
-            padding-top: 2rem;
-            margin-top: 2rem;
+            padding-top: 3rem;
+            margin-top: 3rem;
             border-top: 1px solid rgba(0, 0, 0, 0.1);
             color: var(--text-light);
+            position: relative;
         }
 
         body.dark-mode footer {
@@ -427,42 +842,174 @@
 
         .quote {
             font-style: italic;
-            margin-top: 1rem;
+            margin: 2rem auto;
             color: var(--text);
+            max-width: 700px;
+            font-size: 1.1rem;
+            line-height: 1.8;
+            position: relative;
         }
 
         body.dark-mode .quote {
             color: var(--light);
         }
 
+        .quote::before, .quote::after {
+            content: '"';
+            display: inline;
+            font-size: 2rem;
+            line-height: 0;
+            position: relative;
+            top: 0.7rem;
+            color: var(--primary);
+            opacity: 0.5;
+        }
+
+        body.dark-mode .quote::before, 
+        body.dark-mode .quote::after {
+            color: var(--accent);
+        }
+
+        .quote::before {
+            margin-right: 5px;
+        }
+
+        .quote::after {
+            margin-left: 5px;
+        }
+
+        .back-to-top {
+            position: absolute;
+            top: -25px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: var(--primary);
+            color: var(--white);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        body.dark-mode .back-to-top {
+            background-color: var(--accent);
+            color: var(--dark);
+        }
+
+        .back-to-top:hover {
+            transform: translateX(-50%) translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+        }
+
+        .copyright {
+            margin-top: 1rem;
+        }
+
         /* ====== Responsive Styles ====== */
-        @media (max-width: 768px) {
-            .header-content {
-                flex-direction: column;
-                text-align: center;
+        @media (max-width: 1200px) {
+            .main-grid {
+                grid-template-columns: 1fr;
             }
 
-            .profile-image-container {
-                margin-bottom: 1.5rem;
+            .sidebar {
+                grid-row: 1;
+                flex-direction: row;
+                flex-wrap: wrap;
+                justify-content: space-between;
+            }
+
+            .sidebar-card {
+                flex: 1 1 300px;
+            }
+        }
+
+        @media (max-width: 992px) {
+            .header-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+                text-align: center;
             }
 
             .social-icons {
                 justify-content: center;
             }
 
-            .theme-toggle {
-                position: relative;
-                top: auto;
-                right: auto;
-                margin: 1rem auto;
+            .profile-image-container {
+                max-width: 500px;
+                margin: 0 auto;
             }
+
+            .container {
+                padding: 2rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header-text h1 {
+                font-size: 2.8rem;
+            }
+
+            .section-title {
+                font-size: 1.8rem;
+            }
+
+            .concert-list {
+                grid-template-columns: 1fr;
+            }
+
+            .sidebar-card {
+                flex: 1 1 100%;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .header-text h1 {
+                font-size: 2.2rem;
+            }
+
+            .container {
+                padding: 1.5rem;
+            }
+
+            .header-content {
+                gap: 1.5rem;
+            }
+
+            .title {
+                font-size: 1.2rem;
+            }
+
+            .social-links {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-email a {
+                font-size: 1.1rem;
+            }
+        }
+
+        /* ====== Animations ====== */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .animate-fade {
+            animation: fadeIn 1s ease-in-out;
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <header>
-            <div class="header-content">
+        <!-- Header Section -->
+        <header class="animate-fade">
+            <div class="header-overlay"></div>
+            <div class="header-content" data-aos="fade-up">
                 <div class="profile-image-container">
                     <img src="https://images.unsplash.com/photo-1511671782779-c97d3d27a5d4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="Michaela Petrova playing cello" class="profile-image">
                 </div>
@@ -484,130 +1031,239 @@
             </button>
         </header>
 
-        <!-- Video Section -->
-        <section class="video-section">
-            <h2 class="section-title">Performance Highlight</h2>
-            <div class="video-container">
-                <iframe id="featuredVideo" src="https://www.youtube.com/embed/GE3JmlCp2I4?autoplay=1&mute=1" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-            </div>
-        </section>
+        <!-- Main Content Grid -->
+        <div class="main-grid">
+            <!-- Main Content -->
+            <main>
+                <!-- Video Section -->
+                <section class="video-section" data-aos="fade-up" data-aos-delay="100">
+                    <h2 class="section-title">Performance Highlight</h2>
+                    <div class="video-container">
+                        <iframe src="https://www.youtube.com/embed/GE3JmlCp2I4?modestbranding=1&rel=0" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+                </section>
 
-        <!-- Concerts Section -->
-        <section>
-            <h2 class="section-title">Concert Schedule</h2>
-            <div class="concerts">
-                <div class="concert-section">
-                    <h3 class="section-title">Upcoming Concerts</h3>
-                    <div class="concert-list">
-                        <div class="concert-item">
-                            <div class="concert-date">October 15, 2023</div>
-                            <div class="concert-location">Carnegie Hall, New York</div>
-                            <div class="concert-program">Bach: Cello Suite No. 5 / Shostakovich: Cello Concerto No. 1</div>
+                <!-- Audio Section -->
+                <section class="audio-section" data-aos="fade-up" data-aos-delay="150">
+                    <h2 class="section-title">Recent Recordings</h2>
+                    <div class="audio-player">
+                        <div class="audio-track">
+                            <h3 class="track-title">Bach: Cello Suite No. 1 in G Major</h3>
+                            <div class="audio-container">
+                                <audio controls>
+                                    <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
+                                    Your browser does not support the audio element.
+                                </audio>
+                            </div>
                         </div>
-                        <div class="concert-item">
-                            <div class="concert-date">November 2, 2023</div>
-                            <div class="concert-location">Royal Albert Hall, London</div>
-                            <div class="concert-program">Dvořák: Cello Concerto (London Philharmonic)</div>
+                        <div class="audio-track">
+                            <h3 class="track-title">Shostakovich: Cello Concerto No. 1 (Excerpt)</h3>
+                            <div class="audio-container">
+                                <audio controls>
+                                    <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-9.mp3" type="audio/mpeg">
+                                    Your browser does not support the audio element.
+                                </audio>
+                            </div>
                         </div>
-                        <div class="concert-item">
-                            <div class="concert-date">December 10, 2023</div>
-                            <div class="concert-location">Suntory Hall, Tokyo</div>
-                            <div class="concert-program">Recital: works by Britten, Cassadó, and Fauré</div>
+                    </div>
+                </section>
+
+                <!-- Concerts Section -->
+                <section class="concerts" data-aos="fade-up" data-aos-delay="200">
+                    <h2 class="section-title" data-aos="title-animation">Concert Schedule</h2>
+                    <div class="concert-section">
+                        <h3 class="section-title">Upcoming Concerts</h3>
+                        <div class="concert-list">
+                            <div class="concert-item">
+                                <div class="concert-date">October 15, 2023</div>
+                                <div class="concert-location"><i class="fas fa-map-marker-alt"></i> Carnegie Hall, New York</div>
+                                <div class="concert-program">Bach: Cello Suite No. 5 / Shostakovich: Cello Concerto No. 1</div>
+                            </div>
+                            <div class="concert-item">
+                                <div class="concert-date">November 2, 2023</div>
+                                <div class="concert-location"><i class="fas fa-map-marker-alt"></i> Royal Albert Hall, London</div>
+                                <div class="concert-program">Dvořák: Cello Concerto (London Philharmonic)</div>
+                            </div>
+                            <div class="concert-item">
+                                <div class="concert-date">December 10, 2023</div>
+                                <div class="concert-location"><i class="fas fa-map-marker-alt"></i> Suntory Hall, Tokyo</div>
+                                <div class="concert-program">Recital: works by Britten, Cassadó, and Fauré</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="concert-section">
+                        <h3 class="section-title">Past Performances</h3>
+                        <div class="concert-list">
+                            <div class="concert-item">
+                                <div class="concert-date">June 3, 2023</div>
+                                <div class="concert-location"><i class="fas fa-map-marker-alt"></i> Berlin Philharmonie, Germany</div>
+                                <div class="concert-program">Elgar: Cello Concerto (Berlin Philharmonic)</div>
+                            </div>
+                            <div class="concert-item">
+                                <div class="concert-date">March 20, 2023</div>
+                                <div class="concert-location"><i class="fas fa-map-marker-alt"></i> Sydney Opera House, Australia</div>
+                                <div class="concert-program">Haydn & Schumann Cello Concertos</div>
+                            </div>
+                            <div class="concert-item">
+                                <div class="concert-date">January 7, 2023</div>
+                                <div class="concert-location"><i class="fas fa-map-marker-alt"></i> Elbphilharmonie, Hamburg</div>
+                                <div class="concert-program">Contemporary works by living composers</div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Social Media Section -->
+                <section class="social-section" data-aos="fade-up" data-aos-delay="250">
+                    <h2 class="section-title">Connect With Me</h2>
+                    <div class="social-links">
+                        <!-- YouTube -->
+                        <div class="social-card youtube-card" data-url="https://www.youtube.com/michaelapetrovacello">
+                            <i class="fab fa-youtube social-icon youtube-icon"></i>
+                            <h3 class="social-name">YouTube</h3>
+                            <p class="social-desc">Full concert videos & performance highlights</p>
+                            <button class="social-btn">
+                                <i class="fab fa-youtube"></i> View Channel
+                            </button>
+                        </div>
+                        
+                        <!-- Instagram -->
+                        <div class="social-card instagram-card" data-url="https://www.instagram.com/michaelapetrovacello">
+                            <i class="fab fa-instagram social-icon instagram-icon"></i>
+                            <h3 class="social-name">Instagram</h3>
+                            <p class="social-desc">Behind-the-scenes & daily life</p>
+                            <button class="social-btn">
+                                <i class="fab fa-instagram"></i> Follow Me
+                            </button>
+                        </div>
+                        
+                        <!-- Spotify -->
+                        <div class="social-card spotify-card" data-url="https://open.spotify.com/artist/michaelapetrovacello">
+                            <i class="fab fa-spotify social-icon spotify-icon"></i>
+                            <h3 class="social-name">Spotify</h3>
+                            <p class="social-desc">Listen to my recordings</p>
+                            <button class="social-btn">
+                                <i class="fab fa-spotify"></i> Listen Now
+                            </button>
+                        </div>
+                        
+                        <!-- Facebook -->
+                        <div class="social-card facebook-card" data-url="https://www.facebook.com/michaelapetrovacello">
+                            <i class="fab fa-facebook-f social-icon facebook-icon"></i>
+                            <h3 class="social-name">Facebook</h3>
+                            <p class="social-desc">News & concert updates</p>
+                            <button class="social-btn">
+                                <i class="fab fa-facebook-f"></i> Connect
+                            </button>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Contact Section -->
+                <section class="contact-section" data-aos="fade-up" data-aos-delay="300">
+                    <h2 class="section-title">Booking & Inquiries</h2>
+                    <div class="contact-email">
+                        <a href="mailto:booking@michaelapetrova.com">booking@michaelapetrova.com</a>
+                    </div>
+                    <div class="social-icons">
+                        <a href="tel:+11234567890" class="contact-icon"><i class="fas fa-phone"></i></a>
+                        <a href="https://wa.me/11234567890" class="contact-icon"><i class="fab fa-whatsapp"></i></a>
+                        <a href="mailto:booking@michaelapetrova.com" class="contact-icon"><i class="fas fa-envelope"></i></a>
+                    </div>
+                </section>
+            </main>
+
+            <!-- Sidebar -->
+            <aside class="sidebar">
+                <!-- Upcoming Events -->
+                <div class="sidebar-card" data-aos="fade-left" data-aos-delay="100">
+                    <h3 class="sidebar-title">Upcoming Events</h3>
+                    <div class="event-list">
+                        <div class="event-item">
+                            <div class="event-date"><i class="far fa-calendar-alt"></i> Oct 15, 2023</div>
+                            <div class="event-location">Carnegie Hall, New York</div>
+                            <div class="event-program">Bach & Shostakovich</div>
+                        </div>
+                        <div class="event-item">
+                            <div class="event-date"><i class="far fa-calendar-alt"></i> Nov 2, 2023</div>
+                            <div class="event-location">Royal Albert Hall, London</div>
+                            <div class="event-program">Dvořák Cello Concerto</div>
+                        </div>
+                        <div class="event-item">
+                            <div class="event-date"><i class="far fa-calendar-alt"></i> Dec 10, 2023</div>
+                            <div class="event-location">Suntory Hall, Tokyo</div>
+                            <div class="event-program">Solo Recital</div>
+                        </div>
+                        <div class="event-item">
+                            <div class="event-date"><i class="far fa-calendar-alt"></i> Jan 20, 2024</div>
+                            <div class="event-location">Wiener Konzerthaus, Vienna</div>
+                            <div class="event-program">Beethoven Triple Concerto</div>
                         </div>
                     </div>
                 </div>
 
-                <div class="concert-section">
-                    <h3 class="section-title">Past Performances</h3>
-                    <div class="concert-list">
-                        <div class="concert-item">
-                            <div class="concert-date">June 3, 2023</div>
-                            <div class="concert-location">Berlin Philharmonie, Germany</div>
-                            <div class="concert-program">Elgar: Cello Concerto (Berlin Philharmonic)</div>
+                <!-- Testimonial -->
+                <div class="sidebar-card" data-aos="fade-left" data-aos-delay="150">
+                    <h3 class="sidebar-title">Featured Review</h3>
+                    <div class="testimonial">
+                        <p class="testimonial-text">
+                            Petrova's interpretation of the Dvořák was nothing short of revelatory. Her technical mastery served an emotional depth that brought tears to the audience. The cello has found its new global ambassador.
+                        </p>
+                        <p class="testimonial-author">
+                            - The New York Times
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Blog Preview -->
+                <div class="sidebar-card" data-aos="fade-left" data-aos-delay="200">
+                    <h3 class="sidebar-title">Latest News</h3>
+                    <div class="blog-preview">
+                        <div class="blog-item">
+                            <h4>New Album Release: Romantic Cello</h4>
+                            <div class="blog-date">September 5, 2023</div>
+                            <p class="blog-excerpt">My new album featuring works by Rachmaninoff and Schumann is now available on all major platforms.</p>
                         </div>
-                        <div class="concert-item">
-                            <div class="concert-date">March 20, 2023</div>
-                            <div class="concert-location">Sydney Opera House, Australia</div>
-                            <div class="concert-program">Haydn & Schumann Cello Concertos</div>
+                        <div class="blog-item">
+                            <h4>Masterclass at Juilliard</h4>
+                            <div class="blog-date">August 12, 2023</div>
+                            <p class="blog-excerpt">Returning to my alma mater to work with talented young cellists this November.</p>
                         </div>
-                        <div class="concert-item">
-                            <div class="concert-date">January 7, 2023</div>
-                            <div class="concert-location">Elbphilharmonie, Hamburg</div>
-                            <div class="concert-program">Contemporary works by living composers</div>
+                        <div class="blog-item">
+                            <h4>Artist Residency in Vienna</h4>
+                            <div class="blog-date">July 28, 2023</div>
+                            <p class="blog-excerpt">Excited to announce my 2024 residency with the Vienna Symphony Orchestra.</p>
                         </div>
                     </div>
                 </div>
-            </div>
-        </section>
+            </aside>
+        </div>
 
-        <!-- Social Media Section -->
-        <section class="social-section">
-            <h2 class="section-title">Connect With Me</h2>
-            <div class="social-links">
-                <!-- YouTube -->
-                <div class="social-card youtube-card" data-url="https://www.youtube.com/michaelapetrovacello">
-                    <i class="fab fa-youtube social-icon youtube-icon"></i>
-                    <h3 class="social-name">YouTube</h3>
-                    <p class="social-desc">Full concert videos & performance highlights</p>
-                    <button class="social-btn">
-                        <i class="fab fa-youtube"></i> View Channel
-                    </button>
-                </div>
-                
-                <!-- Instagram -->
-                <div class="social-card instagram-card" data-url="https://www.instagram.com/michaelapetrovacello">
-                    <i class="fab fa-instagram social-icon instagram-icon"></i>
-                    <h3 class="social-name">Instagram</h3>
-                    <p class="social-desc">Behind-the-scenes & daily life</p>
-                    <button class="social-btn">
-                        <i class="fab fa-instagram"></i> Follow Me
-                    </button>
-                </div>
-                
-                <!-- Spotify -->
-                <div class="social-card spotify-card" data-url="https://open.spotify.com/artist/michaelapetrovacello">
-                    <i class="fab fa-spotify social-icon spotify-icon"></i>
-                    <h3 class="social-name">Spotify</h3>
-                    <p class="social-desc">Listen to my recordings</p>
-                    <button class="social-btn">
-                        <i class="fab fa-spotify"></i> Listen Now
-                    </button>
-                </div>
-                
-                <!-- Facebook -->
-                <div class="social-card facebook-card" data-url="https://www.facebook.com/michaelapetrovacello">
-                    <i class="fab fa-facebook-f social-icon facebook-icon"></i>
-                    <h3 class="social-name">Facebook</h3>
-                    <p class="social-desc">News & concert updates</p>
-                    <button class="social-btn">
-                        <i class="fab fa-facebook-f"></i> Connect
-                    </button>
-                </div>
+        <footer data-aos="fade-up" data-aos-delay="100">
+            <div class="back-to-top" id="backToTop">
+                <i class="fas fa-arrow-up"></i>
             </div>
-        </section>
-
-        <!-- Contact Section -->
-        <section class="contact-section">
-            <h2 class="section-title">Booking & Inquiries</h2>
-            <div class="contact-email">
-                <a href="mailto:booking@michaelapetrova.com">booking@michaelapetrova.com</a>
-            </div>
-            <div class="social-icons">
-                <a href="tel:+11234567890" class="contact-icon"><i class="fas fa-phone"></i></a>
-                <a href="https://wa.me/11234567890" class="contact-icon"><i class="fab fa-whatsapp"></i></a>
-                <a href="mailto:booking@michaelapetrova.com" class="contact-icon"><i class="fas fa-envelope"></i></a>
-            </div>
-        </section>
-
-        <footer>
-            &copy; 2023 Michaela Petrova. All rights reserved.
             <div class="quote">
-                "The cello is the most perfect instrument aside from the human voice."<br>— Jacqueline du Pré
+                The cello is like a beautiful woman who has not grown older, but younger with time, more slender, more supple, more graceful.
+            </div>
+            <div class="copyright">
+                &copy; 2023 Michaela Petrova. All rights reserved.
             </div>
         </footer>
     </div>
 
+    <!-- AOS Animation Script -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
+        // Initialize AOS
+        AOS.init({
+            duration: 800,
+            easing: 'ease-in-out',
+            once: true,
+            mirror: false
+        });
+
         // Theme Toggle Functionality
         const themeToggle = document.getElementById('themeToggle');
         const currentTheme = localStorage.getItem('theme') || 'light';
@@ -639,6 +1295,12 @@
 
         // Social Card Click Handler
         document.querySelectorAll('.social-card').forEach(card => {
+            const button = card.querySelector('button');
+            button.addEventListener('click', (e) => {
+                e.stopPropagation();
+                window.open(card.dataset.url, '_blank');
+            });
+            
             card.addEventListener('click', (e) => {
                 // Don't follow link if clicked on a button
                 if (e.target.tagName === 'BUTTON' || e.target.tagName === 'I' || e.target.tagName === 'A') {
@@ -648,42 +1310,78 @@
             });
         });
 
-        // Smooth hover effects for concert items
-        const concertItems = document.querySelectorAll('.concert-item');
-        concertItems.forEach(item => {
+        // Back to Top Button
+        const backToTop = document.getElementById('backToTop');
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                backToTop.style.opacity = '1';
+                backToTop.style.visibility = 'visible';
+            } else {
+                backToTop.style.opacity = '0';
+                backToTop.style.visibility = 'hidden';
+            }
+        });
+
+        backToTop.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+
+        // Event item hover animation
+        document.querySelectorAll('.event-item').forEach(item => {
             item.addEventListener('mouseenter', () => {
-                const date = item.querySelector('.concert-date');
+                const date = item.querySelector('.event-date');
                 if (document.body.classList.contains('dark-mode')) {
                     date.style.color = '#d49662';
                 } else {
-                    date.style.color = '#895737';
+                    date.style.color = '#3a2e39';
                 }
             });
             
             item.addEventListener('mouseleave', () => {
-                const date = item.querySelector('.concert-date');
+                const date = item.querySelector('.event-date');
                 if (document.body.classList.contains('dark-mode')) {
-                    date.style.color = '#c08552';
+                    date.style.color = '#c69f89';
                 } else {
-                    date.style.color = '#5e3023';
+                    date.style.color = '#3a2e39';
                 }
             });
         });
 
-        // Auto-pause video when it's not in view
-        const featuredVideo = document.getElementById('featuredVideo');
-        const videoSection = document.querySelector('.video-section');
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (!entry.isIntersecting) {
-                    // Pause video when not visible
-                    featuredVideo.contentWindow.postMessage('{"event":"command","func":"pauseVideo","args":""}', '*');
+        // Blog item animation
+        document.querySelectorAll('.blog-item').forEach(item => {
+            item.addEventListener('mouseenter', () => {
+                const title = item.querySelector('h4');
+                if (document.body.classList.contains('dark-mode')) {
+                    title.style.color = '#d49662';
+                } else {
+                    title.style.color = '#3a2e39';
                 }
             });
-        }, { threshold: 0.5 });
+            
+            item.addEventListener('mouseleave', () => {
+                const title = item.querySelector('h4');
+                if (document.body.classList.contains('dark-mode')) {
+                    title.style.color = '#c69f89';
+                } else {
+                    title.style.color = '#3a2e39';
+                }
+            });
+        });
 
-        observer.observe(videoSection);
+        // Video hover animation
+        const videoContainer = document.querySelector('.video-container');
+        videoContainer.addEventListener('mouseenter', () => {
+            videoContainer.style.transform = 'translateY(-5px)';
+            videoContainer.style.boxShadow = '0 30px 60px rgba(0,0,0,0.3)';
+        });
+        
+        videoContainer.addEventListener('mouseleave', () => {
+            videoContainer.style.transform = 'translateY(0)';
+            videoContainer.style.boxShadow = '0 20px 40px rgba(0,0,0,0.2)';
+        });
 
         // Contact icons animation
         const contactIcons = document.querySelectorAll('.contact-icon');
