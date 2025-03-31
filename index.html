@@ -1,155 +1,701 @@
-<!DOCTYPE HTML>
-<!--
-	Big Picture by HTML5 UP
-	html5up.net | @ajlkn
-	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
--->
-<html>
-	<head>
-		<title>🎻Bernadette König</title>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-		<link rel="stylesheet" href="assets/css/main.css" />
-		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
-	</head>
-	<body class="is-preload">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Michaela Petrova | International Concert Cellist</title>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        /* ====== Global Styles ====== */
+        :root {
+            --primary: #5e3023;
+            --secondary: #895737;
+            --accent: #c08552;
+            --light: #f0e3d3;
+            --dark: #1a1a1a;
+            --text: #333333;
+            --text-light: #666666;
+            --white: #ffffff;
+        }
 
-		<!-- Header -->
-			<header id="header">
-				<h1>Bernadette König</h1>
-				<nav>
-					<ul>
-						<li><a href="#intro">Home</a></li>
-						<li><a href="#one">Biography</a></li>
-						<li><a href="#two">Discography</a></li>
-						<li><a href="#work">My Concerts</a></li>
-						<li><a href="#contact">Contact</a></li>
-					</ul>
-				</nav>
-			</header>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-		<!-- Intro -->
-			<section id="intro" class="main style1 dark fullscreen">
-				<div class="content">
-					<header>
-						<h2>Bernadette König  |Cellist|</h2>
-					</header>
-					<p>Welcome to <strong>My Portfolio</strong></p>
-					<footer>
-						<a href="#one" class="button style2 down">More</a>
-					</footer>
-				</div>
-			</section>
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: var(--light);
+            color: var(--text);
+            line-height: 1.6;
+            transition: all 0.3s ease;
+        }
 
-		<!-- One -->
-			<section id="one" class="main style2 right dark fullscreen">
-				<div class="content box style2">
-					<header>
-						<h2>Biography</h2>
-					</header>
-					<p>Bernadette Koenig was born on 25.03.2003 in Vienna, Austria. Coming from a family of musicians, 
-					she soon  developed great interest in the Cello, which she then pursued starting from the age of seven. 
-					Within the first few years of her musical education, she performed numerous concerts in the Orangerie of Schönbrunn Castle, as well as the Vienna City Hall. At the age of eleven, she successfully auditioned for the Young Student Program at the Music and Arts University of the City of Vienna(MUK), where she has been studying under the guidance of Professor Lilia Shulz-Bayrova.
-</p>
-				</div>
-				<a href="#two" class="button style2 down anchored">Next</a>
-			</section>
+        body.dark-mode {
+            background-color: var(--dark);
+            color: var(--light);
+        }
 
-		<!-- Two -->
-			<section id="two" class="main style2 left dark fullscreen">
-				<div class="content box style2">
-					<header>
-						<h2>Discography</h2>
-					</header>
-					<p>Since 2015, Bernadette has gained extensive chamber music experience through her work with Evgeny Sinaisky, Christoph Eggner, and Matt Hunt. Alongside her passion for chamber music, she has gained substantial orchestral experience, performing at venues such as the Golden Hall of the Musikverein, the Radiokulturhaus, and the Theater an der Wien. Furthermore, Bernadette won first prize in the Austrian National youth competition "Prima La Musica", in both the chamber music and solo categories n 2015 and 2018.</p>
-				</div>
-				<a href="#work" class="button style2 down anchored">Next</a>
-			</section>
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
 
-		<!-- Work -->
-			<section id="work" class="main style3 primary">
-				<div class="content">
-					<header>
-						<h2>My Concerts</h2>
-						<p>Welcome to my concert gallery! 🎶✨ These are some of my favorite moments from the stage—raw energy, unforgettable performances, and the amazing connection with the crowd.</p>
-					</header>
+        h1, h2, h3 {
+            font-family: 'Libre Baskerville', serif;
+            font-weight: 700;
+        }
 
-					<!-- Gallery  -->
-						<div class="gallery">
-							<article class="from-left">
-								<a href="images/fulls/01.jpg" class="image fit"><img src="images/thumbs/01.jpg" title="The Anonymous Red" alt="" /></a>
-							</article>
-							<article class="from-right">
-								<a href="images/fulls/02.jpg" class="image fit"><img src="images/thumbs/02.jpg" title="Airchitecture II" alt="" /></a>
-							</article>
-							<article class="from-left">
-								<a href="images/fulls/03.jpg" class="image fit"><img src="images/thumbs/03.jpg" title="Air Lounge" alt="" /></a>
-							</article>
-							<article class="from-right">
-								<a href="images/fulls/04.jpg" class="image fit"><img src="images/thumbs/04.jpg" title="Carry on" alt="" /></a>
-							</article>
-							<article class="from-left">
-								<a href="images/fulls/05.jpg" class="image fit"><img src="images/thumbs/05.jpg" title="The sparkling shell" alt="" /></a>
-							</article>
-							<article class="from-right">
-								<a href="images/fulls/06.jpg" class="image fit"><img src="images/thumbs/06.jpg" title="Bent IX" alt="" /></a>
-							</article>
-						</div>
+        .section-title {
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+            padding-bottom: 0.5rem;
+            color: var(--primary);
+        }
 
-				</div>
-			</section>
+        body.dark-mode .section-title {
+            color: var(--accent);
+        }
 
-		<!-- Contact -->
-			<section id="contact" class="main style3 secondary">
-				<div class="content">
-					<header>
-						<h2>Get in touch.</h2>
-						<p>Please get in touch with me using my social media pages.</p>
-					</header>
-					<div class="box">
-						<form method="post" action="#">
-							<div class="fields">
-								<div class="field half"><input type="text" name="name" placeholder="Name" /></div>
-								<div class="field half"><input type="email" name="email" placeholder="Email" /></div>
-								<div class="field"><textarea name="message" placeholder="Message" rows="6"></textarea></div>
-							</div>
-							<ul class="actions special">
-								<li><input type="submit" value="Send Message" /></li>
-							</ul>
-						</form>
-					</div>
-				</div>
-			</section>
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 60px;
+            height: 3px;
+            background-color: var(--primary);
+        }
 
-		<!-- Footer -->
-			<footer id="footer">
+        body.dark-mode .section-title::after {
+            background-color: var(--accent);
+        }
 
-				<!-- Icons -->
-					<ul class="icons">
-						<li><a href="#" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
-						<li><a href="#" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
-						<li><a href="#" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
-						<li><a href="#" class="icon brands fa-linkedin-in"><span class="label">LinkedIn</span></a></li>
-						<li><a href="#" class="icon brands fa-dribbble"><span class="label">Dribbble</span></a></li>
-						<li><a href="#" class="icon brands fa-pinterest"><span class="label">Pinterest</span></a></li>
-					</ul>
+        /* ====== Header Styles ====== */
+        header {
+            margin-bottom: 3rem;
+            position: relative;
+        }
 
-				<!-- Menu -->
-					<ul class="menu">
-						<li>&copy; Margad-Erdene Ganbold</li><li>Her <a href="https://html5up.net">Husband</a></li>
-					</ul>
+        .header-content {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            align-items: center;
+        }
 
-			</footer>
+        .profile-image-container {
+            flex: 0 0 300px;
+            max-width: 100%;
+        }
 
-		<!-- Scripts -->
-			<script src="assets/js/jquery.min.js"></script>
-			<script src="assets/js/jquery.poptrox.min.js"></script>
-			<script src="assets/js/jquery.scrolly.min.js"></script>
-			<script src="assets/js/jquery.scrollex.min.js"></script>
-			<script src="assets/js/browser.min.js"></script>
-			<script src="assets/js/breakpoints.min.js"></script>
-			<script src="assets/js/util.js"></script>
-			<script src="assets/js/main.js"></script>
+        .profile-image {
+            width: 100%;
+            border-radius: 8px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease;
+        }
 
-	</body>
+        .profile-image:hover {
+            transform: scale(1.02);
+        }
+
+        .header-text {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .header-text h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            color: var(--primary);
+        }
+
+        body.dark-mode .header-text h1 {
+            color: var(--accent);
+        }
+
+        .title {
+            font-size: 1.2rem;
+            font-weight: 500;
+            margin-bottom: 1rem;
+            color: var(--secondary);
+        }
+
+        body.dark-mode .title {
+            color: #c08552;
+        }
+
+        .bio {
+            margin-bottom: 1.5rem;
+            color: var(--text);
+        }
+
+        body.dark-mode .bio {
+            color: var(--light);
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .contact-icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: var(--primary);
+            color: var(--white);
+            border-radius: 50%;
+            transition: all 0.3s ease;
+        }
+
+        .contact-icon:hover {
+            background-color: var(--secondary);
+            transform: translateY(-3px);
+        }
+
+        /* ====== Theme Toggle Button ====== */
+        .theme-toggle {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background-color: var(--primary);
+            color: var(--white);
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 30px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.3s ease;
+        }
+
+        body.dark-mode .theme-toggle {
+            background-color: var(--accent);
+            color: var(--dark);
+        }
+
+        .theme-toggle:hover {
+            background-color: var(--secondary);
+            transform: translateY(-2px);
+        }
+
+        body.dark-mode .theme-toggle:hover {
+            background-color: #d49662;
+        }
+
+        /* ====== Video Section ====== */
+        .video-section {
+            margin-bottom: 3rem;
+        }
+
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+            border-radius: 8px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        /* ====== Concerts Section ====== */
+        .concerts {
+            margin-bottom: 3rem;
+        }
+
+        .concert-section {
+            margin-bottom: 2rem;
+        }
+
+        .concert-list {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .concert-item {
+            background-color: var(--white);
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+        
+        body.dark-mode .concert-item {
+            background-color: #2a2a2a;
+        }
+
+        .concert-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .concert-date {
+            font-weight: 600;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+
+        body.dark-mode .concert-date {
+            color: var(--accent);
+        }
+
+        .concert-location {
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+            color: var(--text);
+        }
+
+        body.dark-mode .concert-location {
+            color: var(--light);
+        }
+
+        .concert-program {
+            color: var(--text-light);
+            font-style: italic;
+        }
+
+        body.dark-mode .concert-program {
+            color: #aaaaaa;
+        }
+
+        /* ====== Social Section ====== */
+        .social-section {
+            margin-bottom: 3rem;
+        }
+
+        .social-links {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .social-card {
+            background-color: var(--white);
+            padding: 2rem;
+            border-radius: 8px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        body.dark-mode .social-card {
+            background-color: #2a2a2a;
+        }
+
+        .social-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .social-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            transition: transform 0.3s ease;
+        }
+
+        .social-card:hover .social-icon {
+            transform: scale(1.1);
+        }
+
+        .social-name {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .social-desc {
+            color: var(--text-light);
+            margin-bottom: 1.5rem;
+            min-height: 50px;
+        }
+
+        body.dark-mode .social-desc {
+            color: #aaaaaa;
+        }
+
+        .social-btn {
+            background-color: var(--primary);
+            color: var(--white);
+            border: none;
+            padding: 0.5rem 1.5rem;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .youtube-card:hover .social-btn {
+            background-color: #ff0000;
+        }
+
+        .instagram-card:hover .social-btn {
+            background: linear-gradient(45deg, #405de6, #5851db, #833ab4, #c13584, #e1306c, #fd1d1d);
+        }
+
+        .spotify-card:hover .social-btn {
+            background-color: #1DB954;
+        }
+
+        .facebook-card:hover .social-btn {
+            background-color: #1877F2;
+        }
+
+        .youtube-icon {
+            color: #ff0000;
+        }
+
+        .instagram-icon {
+            color: #c13584;
+        }
+
+        .spotify-icon {
+            color: #1DB954;
+        }
+
+        .facebook-icon {
+            color: #1877F2;
+        }
+
+        /* ====== Contact Section ====== */
+        .contact-section {
+            margin-bottom: 3rem;
+            text-align: center;
+        }
+
+        .contact-email {
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-email a {
+            font-size: 1.2rem;
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        body.dark-mode .contact-email a {
+            color: var(--accent);
+        }
+
+        .contact-email a:hover {
+            color: var(--secondary);
+            text-decoration: underline;
+        }
+
+        body.dark-mode .contact-email a:hover {
+            color: #d49662;
+        }
+
+        /* ====== Footer ====== */
+        footer {
+            text-align: center;
+            padding-top: 2rem;
+            margin-top: 2rem;
+            border-top: 1px solid rgba(0, 0, 0, 0.1);
+            color: var(--text-light);
+        }
+
+        body.dark-mode footer {
+            border-top-color: rgba(255, 255, 255, 0.1);
+            color: #aaaaaa;
+        }
+
+        .quote {
+            font-style: italic;
+            margin-top: 1rem;
+            color: var(--text);
+        }
+
+        body.dark-mode .quote {
+            color: var(--light);
+        }
+
+        /* ====== Responsive Styles ====== */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .profile-image-container {
+                margin-bottom: 1.5rem;
+            }
+
+            .social-icons {
+                justify-content: center;
+            }
+
+            .theme-toggle {
+                position: relative;
+                top: auto;
+                right: auto;
+                margin: 1rem auto;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="header-content">
+                <div class="profile-image-container">
+                    <img src="https://images.unsplash.com/photo-1511671782779-c97d3d27a5d4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="Michaela Petrova playing cello" class="profile-image">
+                </div>
+                <div class="header-text">
+                    <h1>Michaela Petrova</h1>
+                    <div class="title">Concert Cellist</div>
+                    <div class="bio">
+                        Acclaimed international soloist and chamber musician, bringing emotional depth and technical precision to performances worldwide. Juilliard graduate and laureate of the International Tchaikovsky Competition.
+                    </div>
+                    <div class="social-icons">
+                        <a href="#" class="contact-icon"><i class="fas fa-phone"></i></a>
+                        <a href="#" class="contact-icon"><i class="fab fa-whatsapp"></i></a>
+                        <a href="#" class="contact-icon"><i class="fas fa-envelope"></i></a>
+                    </div>
+                </div>
+            </div>
+            <button class="theme-toggle" id="themeToggle">
+                <i class="fas fa-moon"></i> <span class="toggle-text">Dark Mode</span>
+            </button>
+        </header>
+
+        <!-- Video Section -->
+        <section class="video-section">
+            <h2 class="section-title">Performance Highlight</h2>
+            <div class="video-container">
+                <iframe id="featuredVideo" src="https://www.youtube.com/embed/GE3JmlCp2I4?autoplay=1&mute=1" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+        </section>
+
+        <!-- Concerts Section -->
+        <section>
+            <h2 class="section-title">Concert Schedule</h2>
+            <div class="concerts">
+                <div class="concert-section">
+                    <h3 class="section-title">Upcoming Concerts</h3>
+                    <div class="concert-list">
+                        <div class="concert-item">
+                            <div class="concert-date">October 15, 2023</div>
+                            <div class="concert-location">Carnegie Hall, New York</div>
+                            <div class="concert-program">Bach: Cello Suite No. 5 / Shostakovich: Cello Concerto No. 1</div>
+                        </div>
+                        <div class="concert-item">
+                            <div class="concert-date">November 2, 2023</div>
+                            <div class="concert-location">Royal Albert Hall, London</div>
+                            <div class="concert-program">Dvořák: Cello Concerto (London Philharmonic)</div>
+                        </div>
+                        <div class="concert-item">
+                            <div class="concert-date">December 10, 2023</div>
+                            <div class="concert-location">Suntory Hall, Tokyo</div>
+                            <div class="concert-program">Recital: works by Britten, Cassadó, and Fauré</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="concert-section">
+                    <h3 class="section-title">Past Performances</h3>
+                    <div class="concert-list">
+                        <div class="concert-item">
+                            <div class="concert-date">June 3, 2023</div>
+                            <div class="concert-location">Berlin Philharmonie, Germany</div>
+                            <div class="concert-program">Elgar: Cello Concerto (Berlin Philharmonic)</div>
+                        </div>
+                        <div class="concert-item">
+                            <div class="concert-date">March 20, 2023</div>
+                            <div class="concert-location">Sydney Opera House, Australia</div>
+                            <div class="concert-program">Haydn & Schumann Cello Concertos</div>
+                        </div>
+                        <div class="concert-item">
+                            <div class="concert-date">January 7, 2023</div>
+                            <div class="concert-location">Elbphilharmonie, Hamburg</div>
+                            <div class="concert-program">Contemporary works by living composers</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Social Media Section -->
+        <section class="social-section">
+            <h2 class="section-title">Connect With Me</h2>
+            <div class="social-links">
+                <!-- YouTube -->
+                <div class="social-card youtube-card" data-url="https://www.youtube.com/michaelapetrovacello">
+                    <i class="fab fa-youtube social-icon youtube-icon"></i>
+                    <h3 class="social-name">YouTube</h3>
+                    <p class="social-desc">Full concert videos & performance highlights</p>
+                    <button class="social-btn">
+                        <i class="fab fa-youtube"></i> View Channel
+                    </button>
+                </div>
+                
+                <!-- Instagram -->
+                <div class="social-card instagram-card" data-url="https://www.instagram.com/michaelapetrovacello">
+                    <i class="fab fa-instagram social-icon instagram-icon"></i>
+                    <h3 class="social-name">Instagram</h3>
+                    <p class="social-desc">Behind-the-scenes & daily life</p>
+                    <button class="social-btn">
+                        <i class="fab fa-instagram"></i> Follow Me
+                    </button>
+                </div>
+                
+                <!-- Spotify -->
+                <div class="social-card spotify-card" data-url="https://open.spotify.com/artist/michaelapetrovacello">
+                    <i class="fab fa-spotify social-icon spotify-icon"></i>
+                    <h3 class="social-name">Spotify</h3>
+                    <p class="social-desc">Listen to my recordings</p>
+                    <button class="social-btn">
+                        <i class="fab fa-spotify"></i> Listen Now
+                    </button>
+                </div>
+                
+                <!-- Facebook -->
+                <div class="social-card facebook-card" data-url="https://www.facebook.com/michaelapetrovacello">
+                    <i class="fab fa-facebook-f social-icon facebook-icon"></i>
+                    <h3 class="social-name">Facebook</h3>
+                    <p class="social-desc">News & concert updates</p>
+                    <button class="social-btn">
+                        <i class="fab fa-facebook-f"></i> Connect
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section class="contact-section">
+            <h2 class="section-title">Booking & Inquiries</h2>
+            <div class="contact-email">
+                <a href="mailto:booking@michaelapetrova.com">booking@michaelapetrova.com</a>
+            </div>
+            <div class="social-icons">
+                <a href="tel:+11234567890" class="contact-icon"><i class="fas fa-phone"></i></a>
+                <a href="https://wa.me/11234567890" class="contact-icon"><i class="fab fa-whatsapp"></i></a>
+                <a href="mailto:booking@michaelapetrova.com" class="contact-icon"><i class="fas fa-envelope"></i></a>
+            </div>
+        </section>
+
+        <footer>
+            &copy; 2023 Michaela Petrova. All rights reserved.
+            <div class="quote">
+                "The cello is the most perfect instrument aside from the human voice."<br>— Jacqueline du Pré
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        // Theme Toggle Functionality
+        const themeToggle = document.getElementById('themeToggle');
+        const currentTheme = localStorage.getItem('theme') || 'light';
+        const icon = themeToggle.querySelector('i');
+        const toggleText = themeToggle.querySelector('.toggle-text');
+
+        // Apply the saved theme
+        if (currentTheme === 'dark') {
+            document.body.classList.add('dark-mode');
+            icon.classList.replace('fa-moon', 'fa-sun');
+            toggleText.textContent = 'Light Mode';
+        }
+
+        themeToggle.addEventListener('click', () => {
+            document.body.classList.toggle('dark-mode');
+            const isDarkMode = document.body.classList.contains('dark-mode');
+            
+            // Change icon and text
+            if (isDarkMode) {
+                icon.classList.replace('fa-moon', 'fa-sun');
+                toggleText.textContent = 'Light Mode';
+                localStorage.setItem('theme', 'dark');
+            } else {
+                icon.classList.replace('fa-sun', 'fa-moon');
+                toggleText.textContent = 'Dark Mode';
+                localStorage.setItem('theme', 'light');
+            }
+        });
+
+        // Social Card Click Handler
+        document.querySelectorAll('.social-card').forEach(card => {
+            card.addEventListener('click', (e) => {
+                // Don't follow link if clicked on a button
+                if (e.target.tagName === 'BUTTON' || e.target.tagName === 'I' || e.target.tagName === 'A') {
+                    return;
+                }
+                window.open(card.dataset.url, '_blank');
+            });
+        });
+
+        // Smooth hover effects for concert items
+        const concertItems = document.querySelectorAll('.concert-item');
+        concertItems.forEach(item => {
+            item.addEventListener('mouseenter', () => {
+                const date = item.querySelector('.concert-date');
+                if (document.body.classList.contains('dark-mode')) {
+                    date.style.color = '#d49662';
+                } else {
+                    date.style.color = '#895737';
+                }
+            });
+            
+            item.addEventListener('mouseleave', () => {
+                const date = item.querySelector('.concert-date');
+                if (document.body.classList.contains('dark-mode')) {
+                    date.style.color = '#c08552';
+                } else {
+                    date.style.color = '#5e3023';
+                }
+            });
+        });
+
+        // Auto-pause video when it's not in view
+        const featuredVideo = document.getElementById('featuredVideo');
+        const videoSection = document.querySelector('.video-section');
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (!entry.isIntersecting) {
+                    // Pause video when not visible
+                    featuredVideo.contentWindow.postMessage('{"event":"command","func":"pauseVideo","args":""}', '*');
+                }
+            });
+        }, { threshold: 0.5 });
+
+        observer.observe(videoSection);
+
+        // Contact icons animation
+        const contactIcons = document.querySelectorAll('.contact-icon');
+        contactIcons.forEach(icon => {
+            icon.addEventListener('mouseenter', () => {
+                icon.style.transform = 'translateY(-5px) scale(1.1)';
+            });
+            
+            icon.addEventListener('mouseleave', () => {
+                icon.style.transform = 'translateY(0) scale(1)';
+            });
+        });
+    </script>
+</body>
 </html>
