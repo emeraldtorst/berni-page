@@ -32,20 +32,29 @@
         font-family: 'Playfair Display', serif;
     }
     
-    .glass-effect {
-        background: rgba(255, 255, 255, 0.1);
-        backdrop-filter: blur(10px);
-        -webkit-backdrop-filter: blur(10px);
-        border: 1px solid rgba(255, 255, 255, 0.18);
-    }
-    
-    .dark .glass-effect {
-        background: rgba(26, 32, 44, 0.7);
-    }
-    
-    .hero-video {
-        filter: brightness(0.7);
-    }
+        .glass-effect {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.18);
+        }
+        
+        .dark .glass-effect {
+            background: rgba(26, 32, 44, 0.7);
+        }
+        
+        .hero-image {
+            background-image: url('https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+        
+        .hero-overlay {
+            background-color: rgba(0, 0, 0, 0.6);
+        }
+        
+
     
     .timeline-item::before {
         content: '';
