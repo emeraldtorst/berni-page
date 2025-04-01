@@ -379,60 +379,102 @@ body::before {
                 <div class="w-24 h-1 bg-accent mx-auto mb-12"></div>
             </div>
             
-            <!-- Audio Player -->
-            <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-xl overflow-hidden mb-16 animate-on-scroll">
-                <div class="audio-player p-8">
-                    <div class="flex flex-col md:flex-row items-center">
-                        <div class="w-full md:w-1/3 mb-6 md:mb-0">
-                            <img src="https://theclassicreview.com/wp-content/uploads/2023/09/Faure-Marc-Andre-Hamelin-1200-850-600x425.jpg" alt="Album Cover" class="rounded-lg w-full h-auto shadow-md album-cover">
-                        </div>
-                        <div class="w-full md:w-2/3 md:pl-8">
-                            <h3 class="text-2xl font-bold text-gray-800 dark:text-white mb-2">Nocturnes (2023)</h3>
-                            <p class="text-gray-600 dark:text-gray-300 mb-4">Featuring works by Fauré, Pärt, and contemporary composers</p>
-                            
-                            <div class="mt-6">
-                                <div class="flex items-center justify-between mb-2">
-                                    <span class="text-sm text-gray-500 dark:text-gray-400">0:00</span>
-                                    <span class="text-sm text-gray-500 dark:text-gray-400">4:32</span>
-                                </div>
-                                <div class="relative h-2 bg-gray-200 dark:bg-gray-700 rounded-full mb-4">
-                                    <div class="absolute h-2 bg-accent rounded-full w-1/3"></div>
-                                </div>
-                            </div>
-                            
-                            <div class="flex items-center justify-between">
-                                <button class="p-3 rounded-full bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600">
-                                    <i class="fas fa-backward text-gray-700 dark:text-white"></i>
-                                </button>
-                                <button class="p-4 rounded-full bg-accent text-white hover:bg-accent/90">
-                                    <i class="fas fa-play text-xl"></i>
-                                </button>
-                                <button class="p-3 rounded-full bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600">
-                                    <i class="fas fa-forward text-gray-700 dark:text-white"></i>
-                                </button>
-                                <button class="p-3 rounded-full bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600">
-                                    <i class="fas fa-random text-gray-700 dark:text-white"></i>
-                                </button>
-                                <button class="p-3 rounded-full bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600">
-                                    <i class="fas fa-redo text-gray-700 dark:text-white"></i>
-                                </button>
-                            </div>
-                            
-                            <div class="mt-6 flex space-x-4">
-                                <button class="px-4 py-2 bg-gray-800 text-white rounded-full text-sm hover:bg-gray-700 dark:hover:bg-gray-600">
-                                    <i class="fab fa-apple mr-2"></i> Apple Music
-                                </button>
-                                <button class="px-4 py-2 bg-green-600 text-white rounded-full text-sm hover:bg-green-700">
-                                    <i class="fab fa-spotify mr-2"></i> Spotify
-                                </button>
-                                <button class="px-4 py-2 bg-blue-500 text-white rounded-full text-sm hover:bg-blue-600">
-                                    <i class="fab fa-youtube mr-2"></i> YouTube
-                                </button>
-                            </div>
-                        </div>
+           <!-- Audio Player -->
+<div class="bg-white dark:bg-gray-800 rounded-2xl shadow-xl overflow-hidden mb-16 animate-on-scroll">
+    <div class="audio-player p-8">
+        <div class="flex flex-col md:flex-row items-center">
+            <div class="w-full md:w-1/3 mb-6 md:mb-0">
+                <img src="https://theclassicreview.com/wp-content/uploads/2023/09/Faure-Marc-Andre-Hamelin-1200-850-600x425.jpg" 
+                     alt="Album Cover" 
+                     class="rounded-lg w-full h-auto shadow-md album-cover">
+            </div>
+            <div class="w-full md:w-2/3 md:pl-8">
+                <h3 class="text-2xl font-bold text-gray-800 dark:text-white mb-2">Nocturnes (2023)</h3>
+                <p class="text-gray-600 dark:text-gray-300 mb-4">Featuring works by Fauré, Pärt, and contemporary composers</p>
+
+                <!-- Actual Audio Element -->
+                <audio id="audioPlayer" src="https://www.bensound.com/bensound-music/bensound-slowmotion.mp3"></audio>
+
+                <div class="mt-6">
+                    <div class="flex items-center justify-between mb-2">
+                        <span id="currentTime" class="text-sm text-gray-500 dark:text-gray-400">0:00</span>
+                        <span id="totalTime" class="text-sm text-gray-500 dark:text-gray-400">4:32</span>
                     </div>
+                    <input id="seekBar" type="range" value="0" min="0" step="1" class="w-full">
+                </div>
+
+                <div class="flex items-center justify-between">
+                    <button class="p-3 rounded-full bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600">
+                        <i class="fas fa-backward text-gray-700 dark:text-white"></i>
+                    </button>
+                    <button id="playPauseButton" class="p-4 rounded-full bg-accent text-white hover:bg-accent/90">
+                        <i class="fas fa-play text-xl"></i>
+                    </button>
+                    <button class="p-3 rounded-full bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600">
+                        <i class="fas fa-forward text-gray-700 dark:text-white"></i>
+                    </button>
+                    <button class="p-3 rounded-full bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600">
+                        <i class="fas fa-random text-gray-700 dark:text-white"></i>
+                    </button>
+                    <button class="p-3 rounded-full bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600">
+                        <i class="fas fa-redo text-gray-700 dark:text-white"></i>
+                    </button>
+                </div>
+
+                <div class="mt-6 flex space-x-4">
+                    <a href="https://music.apple.com" target="_blank" class="px-4 py-2 bg-gray-800 text-white rounded-full text-sm hover:bg-gray-700 dark:hover:bg-gray-600">
+                        <i class="fab fa-apple mr-2"></i> Apple Music
+                    </a>
+                    <a href="https://open.spotify.com" target="_blank" class="px-4 py-2 bg-green-600 text-white rounded-full text-sm hover:bg-green-700">
+                        <i class="fab fa-spotify mr-2"></i> Spotify
+                    </a>
+                    <a href="https://www.youtube.com/results?search_query=Nocturnes+2023" target="_blank" class="px-4 py-2 bg-blue-500 text-white rounded-full text-sm hover:bg-blue-600">
+                        <i class="fab fa-youtube mr-2"></i> YouTube
+                    </a>
                 </div>
             </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    const audio = document.getElementById("audioPlayer");
+    const playPauseButton = document.getElementById("playPauseButton");
+    const seekBar = document.getElementById("seekBar");
+    const currentTimeDisplay = document.getElementById("currentTime");
+    const totalTimeDisplay = document.getElementById("totalTime");
+
+    // Play/Pause functionality
+    playPauseButton.addEventListener("click", () => {
+        if (audio.paused) {
+            audio.play();
+            playPauseButton.innerHTML = '<i class="fas fa-pause text-xl"></i>';
+        } else {
+            audio.pause();
+            playPauseButton.innerHTML = '<i class="fas fa-play text-xl"></i>';
+        }
+    });
+
+    // Update seek bar
+    audio.addEventListener("timeupdate", () => {
+        seekBar.value = (audio.currentTime / audio.duration) * 100;
+        currentTimeDisplay.textContent = formatTime(audio.currentTime);
+    });
+
+    seekBar.addEventListener("input", () => {
+        audio.currentTime = (seekBar.value / 100) * audio.duration;
+    });
+
+    audio.addEventListener("loadedmetadata", () => {
+        totalTimeDisplay.textContent = formatTime(audio.duration);
+    });
+
+    function formatTime(seconds) {
+        let min = Math.floor(seconds / 60);
+        let sec = Math.floor(seconds % 60);
+        return `${min}:${sec < 10 ? "0" + sec : sec}`;
+    }
+</script>
             
           <!-- Video Gallery -->
 <div class="animate-on-scroll">
