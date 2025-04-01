@@ -45,35 +45,35 @@
             --color-light: #f8f8f8;
         }
         
-        body {
-            font-family: 'Montserrat', sans-serif;
-            background-color: var(--color-light);
-            color: var(--color-dark);
-            transition: background-color 0.5s ease, color 0.5s ease;
-        }
-        
-        body.dark {
-            background-color: var(--color-dark);
-            color: var(--color-light);
-        }
-        
-        .glass-effect {
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.3);
-            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-        }
-        
-        .glass-effect-dark {
-            background: rgba(0, 0, 0, 0.2);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
-       }
-
- .hero-video {
+       body {
+        font-family: 'Montserrat', sans-serif;
+        background-color: var(--color-light);
+        color: var(--color-dark);
+        transition: background-color 0.5s ease, color 0.5s ease;
+    }
+    
+    body.dark {
+        background-color: var(--color-dark);
+        color: var(--color-light);
+    }
+    
+    .glass-effect {
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    }
+    
+    .glass-effect-dark {
+        background: rgba(0, 0, 0, 0.2);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
+    }
+    
+    .hero-video {
         position: absolute;
         top: 0;
         left: 0;
@@ -82,96 +82,97 @@
         object-fit: cover;
         z-index: -1;
     }
-        .animate-float {
-            animation: float 6s ease-in-out infinite;
-        }
-        
-        @keyframes float {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-20px); }
-        }
-        
-        .timeline-item::before {
-            content: '';
-            position: absolute;
-            left: 50%;
-            transform: translateX(-50%);
-            top: -20px;
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            background-color: #D4AF37;
-            border: 4px solid #f8f8f8;
-            z-index: 2;
-        }
-        
-        .timeline-line {
-            position: absolute;
-            left: 50%;
-            top: 0;
-            bottom: 0;
-            width: 2px;
-            background: linear-gradient(to bottom, #D4AF37, rgba(212, 175, 55, 0.3));
-            transform: translateX(-50%);
-        }
-        
-        .waveform {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            height: 40px;
-            gap: 4px;
-        }
-        
-        .waveform-bar {
-            border-radius: 4px;
-            background-color: currentColor;
-            width: 4px;
-            height: 100%;
-            animation: waveform-animation 1.8s infinite ease-in-out;
-        }
-        
-        @keyframes waveform-animation {
-            0%, 100% { transform: scaleY(0.5); opacity: 0.6; }
-            50% { transform: scaleY(1.2); opacity: 1; }
-        }
-        
-        .fade-in {
-            opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 0.6s ease, transform 0.6s ease;
-        }
-        
-        .fade-in.active {
-            opacity: 1;
-            transform: translateY(0);
-        }
-        
-        .parallax {
-            background-attachment: fixed;
-            background-position: center;
-            background-repeat: no-repeat;
-            background-size: cover;
-        }
-        
-        .video-thumbnail:hover .play-icon {
-            transform: scale(1.1) translate(-50%, -50%);
-            opacity: 1;
-        }
-        
-        .video-thumbnail::after {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0) 50%);
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-        
-        .video-thumbnail:hover::after {
-            opacity: 1;
-        }
-    </style>
+    
+    .animate-float {
+        animation: float 6s ease-in-out infinite;
+    }
+    
+    @keyframes float {
+        0%, 100% { transform: translateY(0px); }
+        50% { transform: translateY(-20px); }
+    }
+    
+    .timeline-item::before {
+        content: '';
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        top: -20px;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        background-color: #D4AF37;
+        border: 4px solid #f8f8f8;
+        z-index: 2;
+    }
+    
+    .timeline-line {
+        position: absolute;
+        left: 50%;
+        top: 0;
+        bottom: 0;
+        width: 2px;
+        background: linear-gradient(to bottom, #D4AF37, rgba(212, 175, 55, 0.3));
+        transform: translateX(-50%);
+    }
+    
+    .waveform {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        height: 40px;
+        gap: 4px;
+    }
+    
+    .waveform-bar {
+        border-radius: 4px;
+        background-color: currentColor;
+        width: 4px;
+        height: 100%;
+        animation: waveform-animation 1.8s infinite ease-in-out;
+    }
+    
+    @keyframes waveform-animation {
+        0%, 100% { transform: scaleY(0.5); opacity: 0.6; }
+        50% { transform: scaleY(1.2); opacity: 1; }
+    }
+    
+    .fade-in {
+        opacity: 0;
+        transform: translateY(20px);
+        transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    
+    .fade-in.active {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    
+    .parallax {
+        background-attachment: fixed;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+    
+    .video-thumbnail:hover .play-icon {
+        transform: scale(1.1) translate(-50%, -50%);
+        opacity: 1;
+    }
+    
+    .video-thumbnail::after {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0) 50%);
+        opacity: 0;
+        transition: opacity 0.3s ease;
+    }
+    
+    .video-thumbnail:hover::after {
+        opacity: 1;
+    }
+</style>
 </head>
 <body class="font-body bg-light text-dark dark:bg-dark dark:text-light transition-colors duration-300">
     <!-- Loading Screen -->
