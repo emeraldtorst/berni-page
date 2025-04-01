@@ -464,6 +464,57 @@ In December 2024, she participated in a three-week China tour with the Royal Phi
 
     <!-- Music & Media Section -->
     <section id="music" class="py-20 bg-white dark:bg-gray-900">
+
+<!-- Video Gallery -->
+            <div class="glass-effect dark:glass-effect-dark rounded-xl p-8 fade-in">
+                <h3 class="text-3xl font-bold mb-8 text-center font-display">
+                    Video <span class="text-gold">Gallery</span>
+                </h3>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-10">
+                    <!-- Video 1 - ADD data-youtube-id HERE -->
+                    <div class="video-thumbnail relative rounded-lg overflow-hidden group cursor-pointer" data-youtube-id="dQw4w9WgXcQ"> {/* <-- REPLACE ID */}
+                        <img src="https://images.unsplash.com/photo-1470225620780-dba8ba36b745" alt="Video Thumbnail" class="w-full h-64 object-cover">
+                        <div class="play-icon absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-16 h-16 rounded-full bg-gold/80 flex items-center justify-center text-2xl opacity-0 transition-all duration-300">
+                            <i class="fas fa-play text-dark"></i>
+                        </div>
+                        <div class="absolute bottom-0 left-0 right-0 p-4">
+                            <h4 class="text-white font-semibold">Dvořák Cello Concerto</h4>
+                            <p class="text-gray-300 text-sm">Berlin Philharmonic, 2024</p>
+                        </div>
+                    </div>
+
+                    <!-- Video 2 - ADD data-youtube-id HERE -->
+                    <div class="video-thumbnail relative rounded-lg overflow-hidden group cursor-pointer" data-youtube-id="https://www.youtube.com/watch?v=73enZE3-4Tw"> {/* <-- REPLACE ID */}
+                        <img src="https://images.unsplash.com/photo-1458560871784-56d23406c091" alt="Video Thumbnail" class="w-full h-64 object-cover">
+                        <div class="play-icon absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-16 h-16 rounded-full bg-gold/80 flex items-center justify-center text-2xl opacity-0 transition-all duration-300">
+                            <i class="fas fa-play text-dark"></i>
+                        </div>
+                        <div class="absolute bottom-0 left-0 right-0 p-4">
+                            <h4 class="text-white font-semibold">Masterclass: Bach Suite No. 1</h4>
+                            <p class="text-gray-300 text-sm">Juilliard School, 2023</p>
+                        </div>
+                    </div>
+
+                    <!-- Video 3 - ADD data-youtube-id HERE -->
+                    <div class="video-thumbnail relative rounded-lg overflow-hidden group cursor-pointer" data-youtube-id="https://www.youtube.com/watch?v=y1znJZ1Yyyc"> {/* <-- REPLACE ID */}
+                        <img src="https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4" alt="Video Thumbnail" class="w-full h-64 object-cover">
+                        <div class="play-icon absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-16 h-16 rounded-full bg-gold/80 flex items-center justify-center text-2xl opacity-0 transition-all duration-300">
+                            <i class="fas fa-play text-dark"></i>
+                        </div>
+                        <div class="absolute bottom-0 left-0 right-0 p-4">
+                            <h4 class="text-white font-semibold">Shostakovich Cello Sonata</h4>
+                            <p class="text-gray-300 text-sm">Live at Wigmore Hall, 2024</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="text-center mt-6">
+                    <a href="#" class="inline-flex items-center border border-gold text-gold hover:bg-gold hover:text-dark font-semibold py-3 px-8 rounded-full transition-all">
+                        View More Videos <i class="fas fa-chevron-right ml-2"></i>
+                    </a>
+                </div>
+            </div>
         <div class="container mx-auto px-6">
             <div class="text-center mb-16">
                 <h2 class="text-4xl md:text-5xl font-bold font-display mb-4 fade-in">
@@ -1490,6 +1541,83 @@ In December 2024, she participated in a three-week China tour with the Royal Phi
                 });
             }
         });
+
+// Wait for the DOM to be fully loaded
+        document.addEventListener('DOMContentLoaded', function() {
+            // ... (Keep all your existing JS code: Loader, Mobile Menu, Theme Toggle, Smooth Scroll, Intersection Observer, Chatbot, Contact Form) ...
+
+            // --- Start: Video Popup Functionality ---
+            const videoPopup = document.getElementById('video-popup');
+            const popupOverlay = document.getElementById('popup-overlay');
+            const popupClose = document.getElementById('popup-close');
+            const youtubePlayer = document.getElementById('youtube-player');
+            const videoThumbnails = document.querySelectorAll('.video-thumbnail[data-youtube-id]');
+
+            function openPopup(youtubeId) {
+                const embedUrl = `https://www.youtube.com/embed/${youtubeId}?autoplay=1&rel=0`; // Added autoplay=1 and rel=0
+                youtubePlayer.setAttribute('src', embedUrl);
+                videoPopup.classList.remove('hidden');
+                // Prevent background scrolling when popup is open
+                document.body.style.overflow = 'hidden';
+            }
+
+            function closePopup() {
+                videoPopup.classList.add('hidden');
+                youtubePlayer.setAttribute('src', ''); // Stop the video
+                // Restore background scrolling
+                document.body.style.overflow = '';
+            }
+
+            videoThumbnails.forEach(thumbnail => {
+                thumbnail.addEventListener('click', function() {
+                    const youtubeId = this.dataset.youtubeId;
+                    if (youtubeId) {
+                        openPopup(youtubeId);
+                    } else {
+                        console.error("Video thumbnail is missing data-youtube-id attribute.");
+                    }
+                });
+            });
+
+            // Close popup listeners
+            popupClose.addEventListener('click', closePopup);
+            popupOverlay.addEventListener('click', closePopup);
+
+            // Optional: Close popup with Escape key
+            document.addEventListener('keydown', function(event) {
+                if (event.key === 'Escape' && !videoPopup.classList.contains('hidden')) {
+                    closePopup();
+                }
+            });
+            // --- End: Video Popup Functionality ---
+
+        }); // End of DOMContentLoaded listener
     </script>
+
+<!-- Video Popup Modal -->
+    <div id="video-popup" class="fixed inset-0 z-[60] bg-black/80 flex items-center justify-center hidden p-4">
+        <div id="popup-overlay" class="absolute inset-0"></div>
+        <div class="relative bg-black rounded-lg shadow-xl w-full max-w-3xl aspect-video z-10">
+            <button id="popup-close" class="absolute -top-2 -right-2 md:-top-4 md:-right-4 w-8 h-8 md:w-10 md:h-10 bg-white dark:bg-gray-800 rounded-full text-black dark:text-white flex items-center justify-center text-xl hover:bg-opacity-80 transition-opacity z-20">
+                <i class="fas fa-times"></i>
+            </button>
+            <iframe id="youtube-player"
+                    class="w-full h-full rounded-lg"
+                    src=""
+                    title="YouTube video player"
+                    frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    referrerpolicy="strict-origin-when-cross-origin"
+                    allowfullscreen>
+            </iframe>
+        </div>
+    </div>
+    <!-- End Video Popup Modal -->
+
+    <script>
+        // ... (keep existing script content) ...
+    </script>
+</body>
+</html>
 </body>
 </html>
