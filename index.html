@@ -119,15 +119,6 @@ body::before {
         pointer-events: none;
     }
     
-    .loading-circle {
-        width: 50px;
-        height: 50px;
-        border: 3px solid rgba(255, 255, 255, 0.3);
-        border-radius: 50%;
-        border-top-color: var(--accent);
-        animation: spin 1s ease-in-out infinite;
-    }
-    
     @keyframes spin {
         to { transform: rotate(360deg); }
     }
@@ -222,10 +213,6 @@ body::before {
 </style>
 </head>
 <body class="dark:bg-gray-900 dark:text-white relative">
-    <!-- Loading Screen -->
-    <div class="page-transition">
-        <div class="loading-circle"></div>
-    </div>
 <!-- Navigation -->
 <nav class="fixed w-full z-50 glass-effect dark:bg-gray-900/90">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
